@@ -33,20 +33,27 @@ module.  Note that in the diagram above only 4 wires are connected (GND,
 5V, Transmit, Receiver).  The CTS and RTS (Ready-to-send) pins are left
 unconnected because although connecting them should improve the data
 rate during the creation of this wiki page we were unable to
-successfully connect.
+successfully connect. In XCTU software, configure both XBees parameters to:
+
+CE: Standard Router [0]
+
+NI: The name of the device (DroneF450, Ground Station etc.)
+
+BD: 57600 [6]
+
+AP: Transparent Mode [0]
 
 With the CTS and RTS pins disconnected the BRD_SER1_RTSCTS (if using
 Telem1) or BRD_SER2_RTSCTS (if using Telem2) should be set to zero
 (after making the change the flight controller will need to be
-restarted).
+restarted). In ArduCopter latest firmware, these parameters do not exist anymore, so, in this case, just set SERIAL?_BAUD=57 and SERIAL?_PROTOCOL=1 (where ? is the UART number you are using).
 
 .. image:: ../../../images/Telemetry_XBee_MPSetup.jpg
     :target: ../_images/Telemetry_XBee_MPSetup.jpg
 
 The
 `X-CTU <https://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu>`__
-application can be used to configure the XBee modules.  In particular
-they should be set to transmit at 57600 baud.
+application can be used to configure the XBee modules.
 
 Connecting to the Ground Station
 ================================
